@@ -37,3 +37,19 @@ INSERT INTO przetwory(id_przetworu, id_wykonawcy, id_konsumenta, zawartosc) VALU
 zad5.
 INSERT INTO postac(nazwa, rodzaj, data_ur, wiek) VALUES('Thor', 'wiking', '1964-05-16', 33), ('Odin', 'wiking', '1900-01-01', 1000), ('Loki', 'wiking', '1950-05-05', 55), ('Frost', 'wiking', '1999-09-29', 19);
 
+CREATE TABLE statek(nazwa_statku INT NOT NULL AUTO_INCREMENT, rodzaj_statku ENUM('duzy', 'maly'), data_wodowania DATE, max_ladownosc INT UNSIGNED, PRIMARY KEY(nazwa_statku));
+
+INSERT INTO statek(rodzaj_statku, data_wodowania, max_ladownosc) VALUES ('duzy', '2005-12-23', 21115), ('duzy', '2011-11-11', 21377);
+
+ALTER TABLE postac ADD funkcja VARCHAR(100);
+
+UPDATE postac SET funkcja = 'kapitan' WHERE nazwa = 'Bjorn';
+
+ALTER TABLE postac ADD FOREIGN KEY (funkcja) REFERENCES statek(nazwa_statku);??????????????????????????????????????????!!!1234123
+
+....
+.
+.
+Usuń izbę spiżarnia z tabeli izba. - nie zalozylem, nie zrozumialem polecenia wczesniej wczesniej
+.
+DROP TABLE izba;
