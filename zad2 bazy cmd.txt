@@ -1,0 +1,21 @@
+zad1.
+DELETE FROM postac WHERE rodzaj='wiking' ORDER BY wiek DESC LIMIT 2;
+
+ALTER TABLE walizka DROP CONSTRAINT walizka_ibfk_1;
+ ALTER TABLE przetwory DROP CONSTRAINT fk_id_konsumenta;
+ALTER TABLE przetwory DROP CONSTRAINT fk_id_wykonawcy;
+ALTER TABLE postac MODIFY id_postaci INT NOT NULL;
+ALTER TABLE postac DROP PRIMARY KEY;
+
+
+zad2.
+ALTER TABLE postac ADD pesel VARCHAR(11) NOT NULL ;
+UPDATE postac SET pesel='28478346131' WHERE nazwa = 'Drozd';
+UPDATE postac SET pesel='28496386131' WHERE nazwa = 'Thor';
+UPDATE postac SET pesel='92516386131' WHERE nazwa = 'Loki';
+UPDATE postac SET pesel='920159385' WHERE nazwa = 'Frost';
+ALTER TABLE postac ADD PRIMARY KEY (pesel);
+
+ALTER TABLE postac MODIFY rodzaj ENUM('wiking', 'ptak', 'kobieta', 'syrena');
+
+INSERT INTO postac(id_postaci, nazwa, rodzaj, data_ur, wiek, funkcja, pesel) VALUES (10, 'Gertruda Nieszczera', 'syrena', '2016-05-21', 16, NULL, '91520491581');
