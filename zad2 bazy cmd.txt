@@ -19,3 +19,32 @@ ALTER TABLE postac ADD PRIMARY KEY (pesel);
 ALTER TABLE postac MODIFY rodzaj ENUM('wiking', 'ptak', 'kobieta', 'syrena');
 
 INSERT INTO postac(id_postaci, nazwa, rodzaj, data_ur, wiek, funkcja, pesel) VALUES (10, 'Gertruda Nieszczera', 'syrena', '2016-05-21', 16, NULL, '91520491581');
+
+
+zad3.
+UPDATE postac SET funkcja='majtek' WHERE nazwa LIKE '%a%';
+
+mysql> UPDATE statek SET max_ladownosc = max_ladownosc * 0.7 WHERE YEAR(data_wodowania) BETWEEN '1901' AND '2000';
+
+SELECT wiek, CASE WHEN wiek>1000 THEN 'wiek wiekszy od tysiaca' ELSE 'wiek mniejszy od tysiaca' END as wynik FROM postac;
+ALTER TABLE postac ADD CHECK (wiek<1000);
+
+
+zad4.
+ALTER TABLE postac MODIFY COLUMN rodzaj enum('wiking', 'ptak', 'kobieta', 'syrena', 'waz');
+INSERT INTO postac(id_postaci, nazwa, rodzaj, data_ur, wiek, pesel) VALUES(15, 'Loko', 'waz', '2020-02-22', 5, 02445105192);
+
+CREATE TABLE Marynarz( id_postaci INT NOT NULL, nazwa VARCHAR(40), rodzaj ENUM('wiking', 'ptak', 'kobieta', 'syrena', 'waz'), data_ur DATE, wiek INT UNSIGNED, funkcja VARCHAR(100), pesel VARCHAR(11) NOT NULL, PRIMARY KEY(pesel));
+ALTER TABLE Marynarz ADD CHECK (wiek<1000);
+
+
+zad5.
+UPDATE postac SET funkcja=NULL;
+
+DELETE FROM postac WHERE rodzaj='wiking' LIMIT 1;
+
+DELETE FROM statek;
+DROP TABLE statek;
+
+CREATE TABLE zwierz(id INT NOT NULL AUTO_INCREMENT, nazwa VARCHAR(40), wiek INT UNSIGNED, PRIMARY KEY(id));
+INSERT INTO zwierz(nazwa, wiek) VALUES('Drozd', 2), ('Loko', 5);
