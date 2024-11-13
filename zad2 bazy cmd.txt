@@ -24,10 +24,10 @@ INSERT INTO postac(id_postaci, nazwa, rodzaj, data_ur, wiek, funkcja, pesel) VAL
 zad3.
 UPDATE postac SET funkcja='majtek' WHERE nazwa LIKE '%a%';
 
-mysql> UPDATE statek SET max_ladownosc = max_ladownosc * 0.7 WHERE YEAR(data_wodowania) BETWEEN '1901' AND '2000';
+UPDATE statek SET max_ladownosc = max_ladownosc * 0.7 WHERE YEAR(data_wodowania) BETWEEN '1901' AND '2000';
 
-SELECT wiek, CASE WHEN wiek>1000 THEN 'wiek wiekszy od tysiaca' ELSE 'wiek mniejszy od tysiaca' END as wynik FROM postac;
-ALTER TABLE postac ADD CHECK (wiek<1000);
+ALTER TABLE postac ADD CHECK (wiek<1000);// to poprawne
+SELECT wiek, CASE WHEN wiek>1000 THEN 'wiek wiekszy od tysiaca' ELSE 'wiek mniejszy od tysiaca' END as wynik FROM postac;// ciekawostka
 
 
 zad4.
