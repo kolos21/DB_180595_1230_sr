@@ -1,0 +1,35 @@
+zad1.
+SELECT AVG(waga) FROM kreatura;
+
+SELECT rodzaj, AVG(waga), COUNT(*) FROM kreatura GROUP BY rodzaj;
+
+SELECT rodzaj, AVG(TIMESTAMPDIFF(YEAR, dataUr, CURDATE())) as sredni_wiek FROM kreatura GROUP BY rodzaj;
+
+
+zad2.
+SELECT rodzaj, SUM(waga) FROM zasob GROUP BY rodzaj;
+
+SELECT nazwa, AVG(waga) FROM zasob WHERE ilosc>3 GROUP BY nazwa HAVING AVG(waga)>10;
+
+SELECT rodzaj, COUNT(DISTINCT(nazwa)) as ilosc_nazw FROM zasob GROUP BY rodzaj HAVING ilosc_nazw>1;
+
+
+zad3.
+SELECT nazwa, COUNT(ilosc) FROM ekwipunek as e INNER JOIN kreatura as k ON e.idKreatury=k.idKreatury GROUP BY nazwa;
+
+SELECT k.nazwa, z.nazwa FROM ekwipunek as e INNER JOIN kreatura as k ON e.idKreatury=k.idKreatury INNER JOIN zasob as z ON e.idZasobu=z.idZasobu ORDER BY k.nazwa;
+
+SELECT * FROM kreatura as k LEFT JOIN ekwipunek as e ON k.idKreatury=e.idKreatury WHERE e.idEkwipunku IS NULL;
+
+
+zad4.
+SELECT k.nazwa, z.nazwa FROM ekwipunek as e INNER JOIN kreatura as k ON e.idKreatury=k.idKreatury INNER JOIN zasob as z ON e.idZasobu=z.idZasobu WHERE k.rodzaj='wiking' AND YEAR(dataUr) BETWEEN '1670' AND '1679' ORDER BY k.nazwa;
+
+SELECT k.nazwa FROM ekwipunek as e INNER JOIN kreatura as k ON e.idKreatury=k.idKreatury INNER JOIN zasob as z ON e.idZasobu=z.idZasobu WHERE z.rodzaj='jedzenie' ORDER BY YEAR(dataUr) DESC LIMIT 5;
+
+passs
+
+
+zad5.
+SELECT k.rodzaj, AVG(z.waga) FROM ekwipunek as e INNER JOIN kreatura as k ON e.idKreatury=k.idKreatury INNER JOIN zasob as z ON e.idZasobu=z.idZasobu WHERE k.rodzaj NOT LIKE 'malpa' AND k.rodzaj NOT LIKE 'waz' AND e.ilosc<30 GROUP BY k.rodzaj;
+
