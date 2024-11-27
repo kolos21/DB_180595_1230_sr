@@ -1,5 +1,5 @@
 zad1.
-SELECT AVG(waga) FROM kreatura;
+SELECT AVG(waga) FROM kreatura WHERE rodzaj LIKE 'wiking';
 
 SELECT rodzaj, AVG(waga), COUNT(*) FROM kreatura GROUP BY rodzaj;
 
@@ -27,9 +27,10 @@ SELECT k.nazwa, z.nazwa FROM ekwipunek as e INNER JOIN kreatura as k ON e.idKrea
 
 SELECT k.nazwa FROM ekwipunek as e INNER JOIN kreatura as k ON e.idKreatury=k.idKreatury INNER JOIN zasob as z ON e.idZasobu=z.idZasobu WHERE z.rodzaj='jedzenie' ORDER BY YEAR(dataUr) DESC LIMIT 5;
 
-passs
+SELECT k1.nazwa AS Kreatura1, k2.nazwa AS Kreatura2 FROM kreatura k1 JOIN kreatura k2 ON ABS(k1.idkreatury - k2.idkreatury) = 5;
 
 
 zad5.
 SELECT k.rodzaj, AVG(z.waga) FROM ekwipunek as e INNER JOIN kreatura as k ON e.idKreatury=k.idKreatury INNER JOIN zasob as z ON e.idZasobu=z.idZasobu WHERE k.rodzaj NOT LIKE 'malpa' AND k.rodzaj NOT LIKE 'waz' AND e.ilosc<30 GROUP BY k.rodzaj;
 
+SELECT DISTINCT(rodzaj), nazwa, (SELECT dataUr FROM kreatura WHERE dataUr IS NOT NULL ORDER BY dataUr LIMIT 1) as najmlodszy, (SELECT dataUr FROM kreatura ORDER BY dataUr DESC LIMIT 1) as najstarszy FROM kreatura WHERE rodzaj IS NOT NULL; 
