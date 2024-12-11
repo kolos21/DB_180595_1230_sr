@@ -33,4 +33,4 @@ SELECT k1.nazwa AS Kreatura1, k2.nazwa AS Kreatura2 FROM kreatura k1 JOIN kreatu
 zad5.
 SELECT k.rodzaj, AVG(z.waga) FROM ekwipunek as e INNER JOIN kreatura as k ON e.idKreatury=k.idKreatury INNER JOIN zasob as z ON e.idZasobu=z.idZasobu WHERE k.rodzaj NOT LIKE 'malpa' AND k.rodzaj NOT LIKE 'waz' AND e.ilosc<30 GROUP BY k.rodzaj;
 
-SELECT DISTINCT(rodzaj), nazwa, (SELECT dataUr FROM kreatura WHERE dataUr IS NOT NULL ORDER BY dataUr LIMIT 1) as najmlodszy, (SELECT dataUr FROM kreatura ORDER BY dataUr DESC LIMIT 1) as najstarszy FROM kreatura WHERE rodzaj IS NOT NULL; 
+SELECT DISTINCT(rodzaj), nazwa, (SELECT dataUr FROM kreatura WHERE dataUr IS NOT NULL ORDER BY dataUr LIMIT 1) as najmlodszy, (SELECT dataUr FROM kreatura ORDER BY dataUr DESC LIMIT 1) as najstarszy FROM kreatura WHERE rodzaj IS NOT NULL;  DOKONCZYC :((
