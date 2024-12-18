@@ -22,3 +22,4 @@ SELECT DISTINCT(k.nazwa), CASE WHEN u.id_uczestnika IS NULL THEN "nie bral udzia
 
 
 zad4.
+SELECT nazwa, length(dziennik) FROM wyprawa w INNER JOIN etapy_wyprawy e ON w.id_wyprawy=e.idWyprawy;
