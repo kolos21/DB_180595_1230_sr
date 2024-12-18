@@ -10,3 +10,15 @@ SELECT DISTINCT(w.id_wyprawy) as id, nazwa, SUM(ilosc) FROM wyprawa w INNER JOIN
 
 
 zad2.
+SELECT CONCAT(w.nazwa, ", ",SUM(u.id_uczestnika), ", ", k.nazwa) as nazwa FROM wyprawa w INNER JOIN uczestnicy u ON w.id_wyprawy=u.id_wyprawy INNER JOIN kreatura k ON id_uczestnika=idKreatury GROUP BY w.nazwa, k.nazwa;
+
+SELECT dziennik, s.nazwa, k.nazwa FROM etapy_wyprawy e INNER JOIN sektor s ON e.sektor=s.id_sektora INNER JOIN wyprawa w ON e.idWyprawy=w.id_wyprawy INNER JOIN kreatura k ON w.kierownik=k.idKreatury ORDER BY data_rozpoczecia, kolejnosc;
+
+
+zad3.
+SELECT s.nazwa, IFNULL(COUNT(*), 0) ilosc_odwiedzin FROM etapy_wyprawy e RIGHT JOIN wyprawa w ON e.idWyprawy=w.id_wyprawy RIGHT JOIN sektor s ON e.sektor=s.id_sektora GROUP BY s.nazwa;
+
+SELECT DISTINCT(k.nazwa), CASE WHEN u.id_uczestnika IS NULL THEN "nie bral udzialu w wyprawie" ELSE "bral udzial w wyprawie" END AS ilosc FROM uczestnicy u RIGHT JOIN kreatura k ON u.id_uczestnika=k.idKreatury;
+
+
+zad4.
