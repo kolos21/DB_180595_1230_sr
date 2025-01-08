@@ -22,4 +22,10 @@ SELECT DISTINCT(k.nazwa), CASE WHEN u.id_uczestnika IS NULL THEN "nie bral udzia
 
 
 zad4.
-SELECT nazwa, length(dziennik) FROM wyprawa w INNER JOIN etapy_wyprawy e ON w.id_wyprawy=e.idWyprawy;  --- jezeli suma wyniku jest wieksza od 400 olewam, musze ifawcisnac jakiegos i havinga 
+SELECT nazwa, SUM(length(dziennik)) ilosc_znakow FROM wyprawa w INNER JOIN etapy_wyprawy e ON w.id_wyprawy=e.idWyprawy GROUP BY nazwa HAVING SUM(length(dziennik)) < 400;
+
+SELECT DISTINCT w.nazwa, (SUM(z.waga*z.ilosc)/COUNT(u.id_uczestnika)) as srednia_waga FROM wyprawa w INNER JOIN uczestnicy u ON w.id_wyprawy=u.id_wyprawy INNER JOIN kreatura k ON u.id_uczestnika=idKreatury INNER JOIN ekwipunek e ON k.idKreatury=e.idKreatury INNER JOIN zasob z ON e.idZasobu=z.idZasobu GROUP BY w.nazwa;
+
+
+zad5.
+SELECT DISTINCT k.nazwa, TIMESTAMPDIFF(DAY, k.dataUr , w.data_rozpoczecia ) as iloscDni FROM kreatura k INNER JOIN uczestnicy u ON k.idKreatury=u.id_uczestnika INNER JOIN wyprawa w ON u.id_wyprawy=w.id_wyprawy INNER JOIN etapy_wyprawy ew ON u.id_wyprawy=ew.idWyprawy WHERE sektor=7;
